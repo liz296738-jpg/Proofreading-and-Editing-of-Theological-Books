@@ -115,3 +115,74 @@ ZH: [中文译文]
 | 首次启动慢 / 长时间无输出 | 误判卡死而杀进程 | 脚本设置长超时（建议 ≥5 分钟），首次运行会弹出窗口属正常现象。 |
 | 传无效/不完整参数 | 退回 GUI 模式弹出文件格式窗口，自动化挂起 | 自动化必须传完整有效 CLI 参数（`--filetype --infiles --languages --segment --review --tmx` 等）。 |
 | 直接喂 docx 输入 | 内部转 txt 环节引入额外出错点 | 直接喂 UTF-8 纯文本（`EN.txt`/`ZH.txt`）。 |
+
+---
+
+## 四、神学核心词汇库（Glossary.csv 基础版）
+
+> 专为纠正机器翻译（如谷歌翻译、DeepL）或非神学背景译者的常见错误而设计。机器翻译处理神学文本时最致命的弱点是**无法识别专有名词，经常用日常语义或政治、法律词汇直译**。
+> 可直接将下表复制粘贴到 Excel，保存为 `Glossary.csv`（选择 UTF-8 编码以防中文乱码），接入本 SOP 工作流。
+
+| 英文原词 (EN) | 常见机器错译 / 俗翻 (Wrong_Term) | 标准改革宗译法 (Suggested_Term) | 所属神学类别 (Category) |
+| --- | --- | --- | --- |
+| Justification | 证明 / 辩护 / 开脱 / 正当理由 | 称义 | 救恩论 (Soteriology) |
+| Sanctification | 批准 / 认可 / 神圣化 | 成圣 | 救恩论 |
+| Regeneration | 再生 / 恢复 / 翻新 | 重生 | 救恩论 |
+| Election | 选举 / 挑选 | 拣选 | 救恩论 |
+| Predestination | 宿命 / 命运 / 注定 | 预定 / 预定论 | 救恩论 |
+| Total Depravity | 彻底腐败 / 完全堕落 | 全然败坏 / 全然无能 | 救恩论 (加尔文主义五要点) |
+| Limited Atonement | 有限的补偿 / 局部赎罪 | 限定的代赎 / 特定救赎 | 救恩论 (加尔文主义五要点) |
+| Irresistible Grace | 不可抗拒的魅力 / 无法拒绝的优雅 | 不可抗拒的恩典 / 有效恩召 | 救恩论 (加尔文主义五要点) |
+| Perseverance of the Saints | 圣徒的毅力 / 圣者的坚持 | 圣徒永蒙保守 / 圣徒坚忍 | 救恩论 (加尔文主义五要点) |
+| Assurance of Salvation | 救恩的保险 / 拯救的保证 | 救恩的确据 | 救恩论 |
+| Imputation | 归咎 / 控告 / 污蔑 | 归算 / 算为 | 救恩论 (如：义的归算) |
+| Mortification | 苦修 / 羞辱 / 坏死 | 治死 (罪) | 救恩论 / 成圣 |
+| Vivification | 活跃 / 振兴 | 使之活 / 活出新生命 | 救恩论 / 成圣 |
+| Covenant of Works | 工作契约 / 劳动合同 | 行为之约 / 工作之约 | 圣约神学 (Covenant Theology) |
+| Covenant of Grace | 优雅契约 / 恩惠合同 | 恩典之约 | 圣约神学 |
+| Covenant of Redemption | 赎回协议 / 救赎契约 | 救赎之约 | 圣约神学 |
+| Federal Headship | 联邦首脑 / 联邦元首 | 圣约代表 / 联邦元首 / 立约元首 | 圣约神学 |
+| Providence | 天意 / 远见 / 普罗维登斯(地名) | 护理 / 神的护理 | 神论 (Theology Proper) |
+| Decree | 法令 / 判决 / 宣告 | 谕旨 / 定旨 | 神论 |
+| Common Grace | 常见的优雅 / 普通的恩惠 | 普遍恩典 | 神论 |
+| Communicable Attributes | 可传染的属性 / 可沟通的特征 | 可传递的属性 (如：爱、公义) | 神论 |
+| Incommunicable Attributes | 不可沟通的属性 / 无法传染的特征 | 不可传递的属性 (如：全知、永恒) | 神论 |
+| Hypostatic Union | 假设的联合 / 本质的结合 | 位格联合 / 神人二性联合 | 基督论 (Christology) |
+| Active Obedience | 积极听话 / 主动服从 | 主动顺服 (指基督成全律法) | 基督论 |
+| Passive Obedience | 消极听话 / 被动服从 | 被动顺服 (指基督承受刑罚) | 基督论 |
+| Mediator | 调解人 / 仲裁者 | 中保 | 基督论 |
+| Means of Grace | 优雅的手段 / 恩典的方法 | 恩典之道 / 施恩的途径 | 教会论 (Ecclesiology) |
+| Ordinances | 条例 / 法规 / 城市法令 | 圣礼 / 礼仪 | 教会论 |
+| Sacraments | 神圣的东西 / 誓言 | 圣礼 | 教会论 |
+| Regulative Principle | 管理原则 / 监管原则 | 敬拜的限定性原则 / 规范性原则 | 教会论 / 敬拜 |
+| Church Discipline | 教堂规矩 / 教会纪律 | 教会惩戒 / 教会纪律 | 教会论 |
+| Visible Church | 看得见的教堂 | 有形教会 | 教会论 |
+| Invisible Church | 看不见的教堂 | 无形教会 | 教会论 |
+| Session | 会议 / 开庭 / 学期 | 堂会 / 治理委员会 | 教会体制 (Presbyterian Polity) |
+| Presbytery | 神父 / 长老会 | 区会 / 长老区会 | 教会体制 |
+| Synod | 主教会议 / 宗教会议 | 大会 / 宗教大会 | 教会体制 |
+| General Assembly | 联合国大会 / 全体大会 | 总会 | 教会体制 |
+| Ruling Elder | 统治长者 / 执政长老 | 治理长老 | 教会体制 |
+| Teaching Elder | 教学长者 | 教导长老 (通常指牧师) | 教会体制 |
+| Deacon | 执事者 / 男执事 | 执事 | 教会体制 |
+| Paedobaptism | 恋童洗礼 / 小儿洗礼 | 婴儿洗礼 / 圣约婴儿洗礼 | 圣礼神学 |
+| Credobaptism | 信用洗礼 / 信仰洗礼 | 信徒洗礼 | 圣礼神学 |
+| Spiritual Real Presence | 精神上的真实存在 | 属灵真实临在说 (改革宗圣餐观) | 圣礼神学 |
+| Consubstantiation | 合质 / 物质结合 | 同质说 (路德宗圣餐观) | 圣礼神学 |
+| Transubstantiation | 变形 / 变质 | 变质说 (天主教圣餐观) | 圣礼神学 |
+| Eschatology | 末世学 / 终末论 | 末世论 | 末世论 (Eschatology) |
+| Amillennialism | 无千禧年主义 | 无千禧年论 | 末世论 |
+| Postmillennialism | 后千禧年主义 | 后千禧年论 | 末世论 |
+| Premillennialism | 前千禧年主义 | 前千禧年论 | 末世论 |
+| Dispensationalism | 分配主义 / 豁免论 | 时代论 | 末世论 / 圣经神学 |
+| Apologetics | 道歉学 / 辩护学 | 护教学 | 护教学 (Apologetics) |
+| Presuppositionalism | 预设主义 / 前提论 | 前提派护教学 | 护教学 |
+| Hermeneutics | 解释学 | 释经学 | 释经学 (Hermeneutics) |
+| Exegesis | 考证 / 注释 | 解经 / 释经 | 释经学 |
+| Eisegesis | 读入 / 主观解释 | 私意解经 / 读入式解经 | 释经学 |
+| Vocation | 职业 / 培训 | 呼召 / 天职 | 伦理学 / 基督徒生活 |
+
+### 脚本利用建议（如何最大化利用此词汇库）
+
+1. **错词匹配的正则化**：`_batch_audit_vX.py` 搜索 `Wrong_Term` 时**去除空格并忽略大小写**。可将 CSV 的错译列设计为管道分隔（`证明|辩护|开脱|正当理由`），脚本用 `re.split` 或正则匹配，只要命中任意一个俗翻，且同一段英文中包含对应英文原词，就直接送交 Gemini 进行语境确认。
+2. **术语库的持续迭代**：此表覆盖系统神学的骨干。实际跑每一卷时，可随时把 Gemini 发现的**新的高频错译**手动补充进 `Glossary.csv`。词库越厚，脚本的"初筛"过滤能力就越强，消耗 Gemini 的调用次数也就越精准。
