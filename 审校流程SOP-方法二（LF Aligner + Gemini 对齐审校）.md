@@ -18,6 +18,15 @@
 1. 让 Claude Code 执行终端命令，自动调用 LF Aligner 对 `EN.docx` 和 `ZH.docx` 进行句段级对齐。
 2. LF Aligner 会在后台运行，输出一个精准的**中英左右对照 Excel 文件**（`Aligned_vX.xlsx`）。
 
+**LF Aligner 调用约定（已实测）：**
+- **安装路径可含中文**：实测 exe 放在中文路径（如 `E:\z项目下载存放\LF_Aligner（双语对齐工具）\aligner\LF_aligner_4.25.exe`）能正常启动。
+- **待对齐文件的路径必须纯 ASCII**：LF Aligner 在 Windows 上不支持**输入文件**所在的中文/非 ASCII 路径。对齐前把 `EN`/`ZH` 纯文本复制到一个纯英文路径的项目目录（如 `C:\LF_Aligner\vol4\`）再调用对齐；`_batch_audit_vX.py` 统一使用该 ASCII 目录，产出 `Aligned_vX.xlsx` 后再拷回卷文件夹。
+- **输入用纯文本最稳**：LF Aligner 虽支持 docx/pdf 输入，但内部都要先转 txt，多一层出错风险。方法二直接喂 UTF-8 编码的 `EN.txt`/`ZH.txt`。
+- **调用方式**：脚本用 exe 完整路径调用（推荐，脚本内更可控），或把 aligner 目录加入 PATH。
+- **必须传完整有效参数，否则退回 GUI 弹窗**：实测传无效参数会弹出 GUI 文件格式选择窗口。自动化调用必须带完整 CLI 参数（GUI 才会关闭）。
+- **首次启动很慢**：LF Aligner 首次运行要等较久、期间可能长时间无输出，脚本须设足够长的超时（建议 ≥5 分钟），不要误判卡死。
+- **对齐参数**：`--filetype="t" --segment="y" --review="x" --tmx="n"`，`--review="x"` 直接产出 xls 对照表（即 `Aligned_vX.xlsx`）。
+
 ### 阶段 2 · 词汇库初筛与 AI 深度送审（替代原 50 页盲审）
 
 1. 运行 `_batch_audit_vX.py`。该脚本不再按"页数"截断，而是直接读取 `Aligned_vX.xlsx`。
@@ -102,3 +111,7 @@ ZH: [中文译文]
 | Excel 导出乱码 | 审查清单无法阅读 | `pandas.to_excel` 或 `to_csv(encoding='utf-8-sig')` 强制编码。 |
 | AI 输出 JSON 格式破损 | 自动化脚本崩溃报错解析失败 | 在解析脚本中加入 `try-except`，并使用正则表达式提取 `[` 和 `]` 之间的内容。 |
 | 逐句 ±10 句加窗口 | 批次内相邻句对重复塞入同一上下文，token 浪费；且中文侧机器翻译语境可能误导 Gemini | 改用批次级上下文（章节标题 + 批次边界共享 + 术语全局聚合），并在提示词中约定"英文为锚、中文仅作对照"。 |
+| 待对齐文件放在中文/非 ASCII 路径 | LF Aligner 无法处理输入文件，对齐失败或乱错 | 输入文件一律放进纯英文 ASCII 路径（如 `C:\LF_Aligner\vol4\`）；安装路径含中文实测无碍。 |
+| 首次启动慢 / 长时间无输出 | 误判卡死而杀进程 | 脚本设置长超时（建议 ≥5 分钟），首次运行会弹出窗口属正常现象。 |
+| 传无效/不完整参数 | 退回 GUI 模式弹出文件格式窗口，自动化挂起 | 自动化必须传完整有效 CLI 参数（`--filetype --infiles --languages --segment --review --tmx` 等）。 |
+| 直接喂 docx 输入 | 内部转 txt 环节引入额外出错点 | 直接喂 UTF-8 纯文本（`EN.txt`/`ZH.txt`）。 |
